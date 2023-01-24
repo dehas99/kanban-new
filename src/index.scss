@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-::root {
+:root {
   --primary: #625fc7;
   --primary-dimmed: #a8a4ff;
   --secondary: #ea5555;
@@ -24,6 +24,6 @@ body {
   color: var (--text);
   font-family: "Plus Jakarta Sans", sans-serif;
 }
-App {
+.App {
   display: flex;
 }
