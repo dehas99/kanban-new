@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SideNav.scss";
 import { useProject } from "../../context/projectContext";
 
 export default function SideNav() {
-  const { projects, currentProject, changeBoard } = useProject();
-  console.log(projects);
+  const { projects, currentProject, changeBoard, addNewProject } = useProject();
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="sidenav">
       <p>All BOARDS (2)</p>
@@ -20,7 +20,27 @@ export default function SideNav() {
             {project.title}
           </li>
         ))}
+        <li
+          className="create-board"
+          onClick={() => {
+            setIsOpen((currentValue) => !currentValue);
+          }}
+        >
+          Create new board +
+        </li>
       </ul>
+      {isOpen && (
+        <div className="create-project">
+          <input type="text" />
+          <button
+            onClick={() => {
+              addNewProject("hej");
+            }}
+          >
+            Create project
+          </button>
+        </div>
+      )}
     </div>
   );
 }
