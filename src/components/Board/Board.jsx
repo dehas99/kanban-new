@@ -1,35 +1,26 @@
 import React from "react";
 import "./Board.scss";
 import Ticket from "../Ticket/Ticket";
+import { useProject } from "../../context/ProjectContext";
 
 export default function Board() {
+  const { projects, currentProject, changeBoard } = useProject();
+  console.log(currentProject);
   return (
     <div className="board">
-      <div className="board-column">
-        <div className="board-title"></div>
-        <div className="board-title-icon"></div>
-        <h4>To do</h4>
-      </div>
-      <Ticket
-        item={{
-          id: "1",
-          title: "This is description",
-          tasks: ["hoppa 3 gånger", "Rasta hunden"],
-        }}
-      />
-
-      <div className="board-column">
-        <div className="board-title">
-          <div className="board-title-icon"></div>
-          <h2>Doing </h2>
-        </div>
-      </div>
-      <div className="board-column">
-        <div className="board-title">
-          <div className="board-title-icon"></div>
-          <h4>Done</h4>
-        </div>
-      </div>
+      {currentProject.board.map((column) => {
+        return (
+          <div key={column.name} className="board-column">
+            <div className="board-title">
+              <div className={"board-title-icon " + column.name}></div>
+              <h4>Done</h4>
+            </div>
+            {column.tickets.map((ticket) => {
+              return <ticket key={ticket.id} item={ticket} />;
+            })}
+          </div>
+        );
+      })}
     </div>
   );
 }

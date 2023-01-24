@@ -10,6 +10,7 @@ const ProjectProvider = ({ children }) => {
   const [projects, setProjects] = useState(projectsData);
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentProject = projects[currentIndex];
+  console.log(currentProject);
 
   function changeBoard(index) {
     setCurrentIndex(index);
