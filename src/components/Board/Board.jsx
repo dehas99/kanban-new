@@ -1,11 +1,11 @@
 import React from "react";
 import "./Board.scss";
 import Ticket from "../Ticket/Ticket";
-import { useProject } from "../../context/ProjectContext";
+import { useProject } from "../../context/projectContext";
 
 export default function Board() {
-  const { projects, currentProject, changeBoard } = useProject();
-  console.log(currentProject);
+  const { currentProject } = useProject();
+
   return (
     <div className="board">
       {currentProject.board.map((column) => {
@@ -16,7 +16,7 @@ export default function Board() {
               <h4>Done</h4>
             </div>
             {column.tickets.map((ticket) => {
-              return <ticket key={ticket.id} item={ticket} />;
+              return <Ticket key={ticket.id} item={ticket} />;
             })}
           </div>
         );
