@@ -15,7 +15,7 @@ export default function CreateTicket({ setShowAddTicket }) {
         <h3 className="heading-l">Add New Task</h3>
         <button
           onClick={() => {
-            setShowAddTicket(false);
+            setShowAddTicket();
           }}
         >
           close model
@@ -68,14 +68,17 @@ export default function CreateTicket({ setShowAddTicket }) {
           </button>
         </div>
         <button
-          onClick={() =>
+          onClick={() => {
+            if (!title || !description) return;
+
             addTicket({
               id: uuidv4(),
               title,
               description,
               tasks,
-            })
-          }
+            });
+            setShowAddTicket(false);
+          }}
         >
           Create ticket
         </button>
