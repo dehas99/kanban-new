@@ -2,7 +2,7 @@ import React from "react";
 import { useProject } from "../../context/projectContext";
 import "./Navbar.scss";
 
-export default function Navbar() {
+export default function Navbar({ setShowTicket }) {
   const { currentProject } = useProject();
   return (
     <nav className="navbar">
@@ -12,7 +12,7 @@ export default function Navbar() {
       <div className="navbar-heading">
         <h2>{currentProject.title}</h2>
       </div>
-      <button>Add new ticket</button>
+      <button onClick={() => setShowTicket(true)}>Add new ticket</button>
     </nav>
   );
 }

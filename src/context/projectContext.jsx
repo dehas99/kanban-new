@@ -38,11 +38,16 @@ const ProjectProvider = ({ children }) => {
     setProjects([...projects, newProject]);
     setCurrentIndex(projects.length);
   }
+  function addTicket(ticket) {
+    projects[currentIndex].board[0].tickets.push(ticket);
+    setProjects([...projects]);
+  }
   const value = {
-    changeBoard: changeBoard,
-    addNewProject: addNewProject,
-    currentProject: currentProject,
-    projects: projects,
+    addTicket,
+    changeBoard,
+    addNewProject,
+    currentProject,
+    projects,
   };
   return (
     <ProjectContext.Provider value={value}>{children}</ProjectContext.Provider>
