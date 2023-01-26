@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import "./Ticket.scss";
 
-export default function Ticket({ item }) {
+export default function Ticket({ item, provided, snapshot }) {
   const [showList, setShowList] = useState(false);
   return (
-    <div className="ticket" onClick={() => setShowList(!showList)}>
+    <div
+      ref={provided.innerRef}
+      {...provided.draggableProps}
+      {...provided.dragHandleProps}
+      active={snapshot.isDragging.toString()}
+      className="ticket"
+      onClick={() => setShowList((currentValue) => !currentValue)}
+    >
       <h3 className="heading-m">item.titel</h3>
       <p className="body-m">{item.description}</p>
       <p className="body-m">{item.tasks.length}2 subtasks</p>

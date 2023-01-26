@@ -5,14 +5,23 @@
     li {
       width: 85%;
       padding: 15px 30px;
-      background-color: var(--text-dimmed);
-      border-radius: 0px 15px 15p 0px;
+      margin: 6px;
+      border-radius: 0px 15px 15px 0px;
       font-size: 14px;
       font-weight: bold;
       cursor: pointer;
       color: var(--text-gray);
+      display: flex;
+      align-items: center;
+      gap: 4px;
 
-      &.active {
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      &.active,
+      &:hover {
         background-color: var(--text-dimmed);
         color: var(--primary);
       }

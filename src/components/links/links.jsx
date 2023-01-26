@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useProject } from "../../context/projectContext";
-import "./Links.scss";
+import "./links.scss";
+import { Layout, Plus } from "react-feather";
 
 export default function links() {
   const { projects, currentProject, addNewProject, changeBoard } = useProject();
@@ -8,7 +9,7 @@ export default function links() {
   const [text, setText] = useState("");
 
   return (
-    <div className="Links">
+    <div className="links">
       <ul>
         {projects.map((project, index) => (
           <li
@@ -18,6 +19,7 @@ export default function links() {
             key={project.id}
             className={currentProject.id === project.id ? "active" : undefined}
           >
+            <Layout />
             {project.title}
           </li>
         ))}
@@ -27,6 +29,7 @@ export default function links() {
             setIsOpen((currentValue) => !currentValue);
           }}
         >
+          <Plus />
           Create new board +
         </li>
       </ul>
