@@ -3,7 +3,7 @@ import { useProject } from "../../context/projectContext";
 import "./Navbar.scss";
 import { ChevronDown } from "react-feather";
 
-export default function Navbar({ setShowTicket }) {
+export default function Navbar({ setShowTicket, setShowDropDown }) {
   const { currentProject } = useProject();
   return (
     <nav className="navbar">
@@ -12,7 +12,10 @@ export default function Navbar({ setShowTicket }) {
       </div>
       <div className="navbar-heading">
         <h2>{currentProject.title}</h2>
-        <div className="navbar-heading-chevron">
+        <div
+          className="navbar-heading-chevron"
+          onClick={() => setShowDropDown(true)}
+        >
           <ChevronDown />
         </div>
       </div>
